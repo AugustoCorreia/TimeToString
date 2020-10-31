@@ -13,15 +13,14 @@ public class Main {
 			"nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four", "twenty-five",
 			"twenty-six", "twenty-seven", "twenty-eight", "twenty-nine", "half" };
 
-	// Complete the timeInWords function below.
 	static String timeInWords(int h, int m) {
 
 		StringBuilder str = new StringBuilder();
 
 		if (m == 0) {
-			return (str.append(getStringNumber(h)).append(getMinutsRules(m))).toString();
+			return (str.append(getStringNumber(h)).append(getStringMinutsRules(m))).toString();
 		} else {
-			return (str.append(getMinutsRules(m)).append(getHourRules(h, m))).toString();
+			return (str.append(getStringMinutsRules(m)).append(getStringHourRules(h, m))).toString();
 		}
 
 	}
@@ -29,8 +28,6 @@ public class Main {
 	private static final Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) throws IOException {
-		// BufferedWriter bufferedWriter = new BufferedWriter(new
-		// FileWriter(System.getenv("OUTPUT_PATH")));
 		System.out.println("Digite a Hora:");
 		int h = scanner.nextInt();
 		scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
@@ -40,10 +37,6 @@ public class Main {
 
 		String result = timeInWords(h, m);
 		System.out.println(result);
-		// bufferedWriter.write(result);
-		// bufferedWriter.newLine();
-		//
-		// bufferedWriter.close();
 
 		scanner.close();
 	}
@@ -52,7 +45,7 @@ public class Main {
 		return numbers[num];
 	}
 
-	private static String getMinutsRules(Integer num) {
+	private static String getStringMinutsRules(Integer num) {
 		StringBuilder str = new StringBuilder();
 		if (num == 0) {
 			return " o' clock";
@@ -63,7 +56,7 @@ public class Main {
 				return (str.append(getStringNumber(num)).append(" past ")).toString();
 			}
 			return (str.append(getStringNumber(num)).append(" minutes past ")).toString();
-		} else if (num >= 30){
+		} else {
 			int val = 60 - num;
 			if (val == 1) {
 				return (str.append(getStringNumber(val)).append(" minute to ")).toString();
@@ -72,15 +65,14 @@ public class Main {
 			}
 			return (str.append(getStringNumber(val)).append(" minutes to ")).toString();
 		}
-		return null;
 
 	}
 
-	private static String getHourRules(Integer hour, Integer min) {
+	private static String getStringHourRules(Integer hour, Integer min) {
 		StringBuilder str = new StringBuilder();
 		if (min <= 30) {
 			return str.append(getStringNumber(hour)).toString();
-		} else if (min >= 30) {
+		} else {
 			if (hour < 23) {
 				int val = hour + 1;
 				return str.append(getStringNumber(val)).toString();
@@ -88,6 +80,5 @@ public class Main {
 				return str.append(getStringNumber(0)).toString();
 			}
 		}
-		return null;
 	}
 }
