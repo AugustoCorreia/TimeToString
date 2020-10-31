@@ -9,5 +9,5 @@ COMO TESTAR:
 
 
 *Para Rodar no site* https://www.hackerrank.com/challenges/the-time-in-words/problem 
- - copiar toda a classe Solution dento do console da aplicação de teste
- - Executar!
+ - Copiar toda a classe Solution dento do console da aplicação de teste (sobrepondo o código existente)
+ - Executar (Submit Code)!
